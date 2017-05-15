@@ -23,9 +23,17 @@ Budget* findBudget(std::vector<Budget*> &b, std::string name)
 
 void editBudget(Budget* b, double amount)
 {
-	std::cout << "Budget's \"" << b->name() << "\" amount changed from " << b->amount() << " to ";
-	b->setAmount(amount);
-	std::cout << b->amount() << std::endl;
+	if (b->amount() != amount)
+	{
+		std::cout << "Budget's \"" << b->name() << "\" amount changed from " << b->amount() << " to ";
+		b->setAmount(amount);
+		std::cout << b->amount() << std::endl;
+	}
+	else
+	{
+		std::cout << "\"" << b->name() << "\" amount was already at " << b->amount() << std::endl;
+		std::cout << "No changes required." << std::endl;
+	}
 }
 
 int main()
