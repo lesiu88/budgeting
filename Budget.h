@@ -11,11 +11,13 @@ class Budget
 		~Budget();
 
 		std::string		name() const { return this->p_name; }
+		double			amount() const { return this->p_amount; }
+
+		void			setAmount(double amount) { this->p_amount = amount; }
 	private:
 		std::string		p_name;
 		double			p_amount;
 };
-
 
 #endif
 
