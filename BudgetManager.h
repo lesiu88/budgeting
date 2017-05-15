@@ -20,6 +20,8 @@ class BudgetManager
 		bool createBudget(std::string, double);	// Create new budget
 		Budget* findBudget(std::string);		// Find budget
 		void editBudget(Budget*, double);		// Edit budget
+		bool empty();							// Check if there are budgets
+		void listBudgets();
 	private:
 		std::vector<Budget*> p_budgets;			// vector to hold budgets
 };

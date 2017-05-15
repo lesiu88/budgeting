@@ -41,6 +41,18 @@ void BudgetManager::editBudget(Budget* b, double amount)
 	}
 }
 
+bool BudgetManager::empty()
+{
+	if (this->p_budgets.empty())
+		return true;
+	return false;
+}
+
+void BudgetManager::listBudgets()
+{
+	// TODO
+}
+
 BudgetManager::~BudgetManager()
 {
 	if ( !this->p_budgets.empty() )
