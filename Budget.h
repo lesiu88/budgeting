@@ -1,6 +1,11 @@
 #ifndef BUDGET_H_
 #define BUDGET_H_
 
+/*
+	class Budget
+	Puprose: class holding budget data
+*/
+
 #include <iostream>
 #include <string>
 

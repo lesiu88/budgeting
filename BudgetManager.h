@@ -1,6 +1,12 @@
 #ifndef _BUDGETMANAGER_H_
 #define _BUDGETMANAGER_H_
 
+/*
+	class BudgetManager
+
+	Purpose: class to hold budgets and manage them
+*/
+
 class Budget;
 
 #include <string>
@@ -11,11 +17,11 @@ class BudgetManager
 	public:
 		~BudgetManager();
 
-		bool createBudget(std::string, double);
-		Budget* findBudget(std::string);
-		void editBudget(Budget*, double);
+		bool createBudget(std::string, double);	// Create new budget
+		Budget* findBudget(std::string);		// Find budget
+		void editBudget(Budget*, double);		// Edit budget
 	private:
-		std::vector<Budget*> p_budgets;
+		std::vector<Budget*> p_budgets;			// vector to hold budgets
 };
 
 #endif
