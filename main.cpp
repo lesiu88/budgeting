@@ -1,3 +1,4 @@
+#include "Account.h"
 #include "Budget.h"
 #include "BudgetManager.h"
 
@@ -6,8 +7,8 @@
 
 int main()
 {	
-	// Create BudgetManager class to hold and manage all budgets
-	BudgetManager* budgetManager = new BudgetManager();
+	// Create Account class to hold and manage all budgets
+	Account* user = new Account("User");
 
 	bool quit = false;		// Quit program?
 	bool edit = false;		// Edit budget?
@@ -29,7 +30,7 @@ int main()
 			std::cin >> b_name;
 
 			// Check if budget already exists
-			Budget* budget = budgetManager->findBudget(b_name);
+			Budget* budget = user->budgetManager()->findBudget(b_name);
 
 			if (budget != 0)
 			{
@@ -50,9 +51,9 @@ int main()
 
 			// Apply actions accordingly
 			if (edit)
-				budgetManager->editBudget(budget, b_amount);
+				user->budgetManager()->editBudget(budget, b_amount);
 			else
-				budgetManager->createBudget(b_name, b_amount);
+				user->budgetManager()->createBudget(b_name, b_amount);
 		}
 		// Exit program
 		else if (choice=="N" || choice=="n")
@@ -61,8 +62,7 @@ int main()
 			std::cout << "Unrecognized choice." << std::endl;
 	}
 
-	std::cout << "New Budgeting application coming soon." << std::endl;
 	// Clean up
-	delete budgetManager;
+	delete user;
 	return 0;
 }
