@@ -6,6 +6,12 @@
 #include <iostream>
 #include <vector>
 
+void clearScreen()
+{
+	for (int i=0; i!=60; i++)
+		std::cout << std::endl;
+}
+
 int getUserChoice(int max)
 {
 	int choice = 0;
@@ -51,6 +57,7 @@ int main()
 	// Program Main Loop
 	while (!quit)
 	{
+		edit = false;
 		std::cout << "What do you want to do?"		<< std::endl;
 		std::cout << "1 - Add or Edit Budget"		<< std::endl;
 		std::cout << "2 - Add Transaction"			<< std::endl;
@@ -98,6 +105,34 @@ int main()
 				user->budgetManager()->editBudget(budget, b_amount);
 			else
 				user->budgetManager()->createBudget(b_name, b_amount);
+		}
+		else if (choice == 2)
+		{
+			std::cout << "Select budget: "	<< std::endl;
+			std::cout << "1\tGo Back"		<< std::endl;
+			user->budgetManager()->listBudgets();
+			int second_choice = 0;
+			std::cin >> second_choice;
+
+			if ( user->budgetManager()->findBudget(second_choice) )
+			{
+				std::cout << std::endl;
+				std::cout << "Amount? ";
+				int t_amount = 0;
+				std::cin >> t_amount;
+				if (t_amount > 0)
+				{
+					std::cout << "TODO TODO TODO TODO -> t_amount > 0" << std::endl;
+				}
+				else
+				{
+					std::cout << "Amount has to be bigger than 0" << std::endl;
+				}
+			}
+			else
+			{
+				std::cout << "Unrecognized input." << std::endl;
+			}
 		}
 		// Exit program
 		else if (choice == 3)

@@ -19,6 +19,7 @@ class BudgetManager
 
 		bool createBudget(std::string, double);	// Create new budget
 		Budget* findBudget(std::string);		// Find budget
+		Budget* findBudget(int);
 		void editBudget(Budget*, double);		// Edit budget
 		bool empty();							// Check if there are budgets
 		void listBudgets();

@@ -26,8 +26,26 @@ Budget* BudgetManager::findBudget(std::string name)
 	return 0;
 }
 
+Budget* BudgetManager::findBudget(int id)
+{
+	if ( !this->p_budgets.empty() )
+	{
+		for ( std::vector<Budget*>::iterator i=this->p_budgets.begin(); i!=this->p_budgets.end(); i++ )
+		{
+			if ( id == (*i)->id() )
+				return (*i);
+		}
+	}
+	return 0;
+}
+
 void BudgetManager::editBudget(Budget* b, double amount)
 {
+	if (b == 0)
+	{
+		std::cout << "Fatal Error: Trying to edit NULL pointer!" << std::endl;
+		throw;
+	}
 	if (b->amount() != amount)
 	{
 		std::cout << "Budget's \"" << b->name() << "\" amount changed from " << b->amount() << " to ";
@@ -50,6 +68,10 @@ bool BudgetManager::empty()
 
 void BudgetManager::listBudgets()
 {
+	for (std::vector<Budget*>::iterator i=this->p_budgets.begin(); i!=this->p_budgets.end(); i++)
+	{
+		std::cout << (*i)->id() << "\t" << (*i)->name() << " [" << (*i)->amount() << "]" << std::endl;
+	}
 	// TODO
 }
 

@@ -19,7 +19,11 @@ class Budget
 		double			amount() const { return this->p_amount; }
 
 		void			setAmount(double amount) { this->p_amount = amount; }
+		int				id() const { return this->p_id; }
 	private:
+		static int		budget_id;
+
+		int				p_id;
 		std::string		p_name;
 		double			p_amount;
 };
