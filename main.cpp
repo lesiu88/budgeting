@@ -65,6 +65,7 @@ int main()
 
 		choice = getUserChoice(3);
 
+		// Choice 1 - Add or Edit Budget
 		if (choice == 1)
 		{
 			if (user->budgetManager()->empty())
@@ -106,15 +107,19 @@ int main()
 			else
 				user->budgetManager()->createBudget(b_name, b_amount);
 		}
+		// Choice 2: Add Transaction
 		else if (choice == 2)
 		{
 			std::cout << "Select budget: "	<< std::endl;
 			std::cout << "1\tGo Back"		<< std::endl;
 			user->budgetManager()->listBudgets();
 			int second_choice = 0;
-			std::cin >> second_choice;
+			std::string s_choice;
+			std::cin >> s_choice;
+			Budget* transaction_budget;
+			transaction_budget = user->budgetManager()->findBudget( s_choice );
 
-			if ( user->budgetManager()->findBudget(second_choice) )
+			if ( transaction_budget != 0 )
 			{
 				std::cout << std::endl;
 				std::cout << "Amount? ";
@@ -122,7 +127,8 @@ int main()
 				std::cin >> t_amount;
 				if (t_amount > 0)
 				{
-					std::cout << "TODO TODO TODO TODO -> t_amount > 0" << std::endl;
+					Transaction* new_transaction = new Transaction( transaction_budget->name(), t_amount, TYPE_DEBT );
+					user->addTransaction(new_transaction);
 				}
 				else
 				{
@@ -132,6 +138,7 @@ int main()
 			else
 			{
 				std::cout << "Unrecognized input." << std::endl;
+				break;
 			}
 		}
 		// Exit program
